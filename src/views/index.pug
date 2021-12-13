@@ -1,0 +1,14 @@
+doctype html
+html
+    head
+        meta(name='viewport', content='width=device-width')
+
+    body
+        div
+            h2 Infuse Mini App
+            h2 Reverse Message Form
+
+            form(action="/data",method="POST")
+                label(for="message") Enter Your Message
+                input(type="text", name="message")
+                button(type="submit") Submit
