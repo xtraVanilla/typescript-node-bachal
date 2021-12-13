@@ -1,3 +1,3 @@
-npm i
+npm
 npm run package
 npm run start
