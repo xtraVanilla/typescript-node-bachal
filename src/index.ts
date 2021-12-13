@@ -2,7 +2,6 @@ import express, { Request } from "express";
 import path from "path";
 import bodyParser from "body-parser";
 const app = express();
-
 const PORT = 3000;
 
 app.use(bodyParser.json());
@@ -11,6 +10,7 @@ app.use(
     extended: true,
   })
 );
+app.use(express.static("dist/public"));
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 
@@ -24,8 +24,7 @@ app.get("/app", (req, res) => {
 
 app.post("/data", (req: Request, res) => {
   const reversedStr = req.body.message.split("").reverse().join("");
-  const html = `<html><body><div><h2>Infuse Mini App</h2><h2>Reverse Message Form</h2><h3>reversed string: ${reversedStr}</h3></div></body></html>`;
-  return res.send(html);
+  res.send({ message: reversedStr });
 });
 
 app.listen(PORT, () => {
